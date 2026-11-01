@@ -1,0 +1,6 @@
+[[proxies]]
+name = "laptop-status-8765"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 8765
+remotePort = 8081

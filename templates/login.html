@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <title>登录 · T470s 状态中心</title>
+  <link rel="icon" href="/static/status-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/dashboard.20261101.css">
+</head>
+<body class="login-body">
+  <main class="login-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="brand-mark" aria-hidden="true">T</div>
+      <p class="eyebrow">SECURE DEVICE CONSOLE</p>
+      <h1 id="login-title">T470s 状态中心</h1>
+      <p class="login-intro">登录后查看笔记本的最新健康快照。页面只在刷新时采集，不在后台持续轮询。</p>
+      <form method="post" action="/login" class="login-form">
+        <label for="password">访问密码</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" autocomplete="current-password" required autofocus placeholder="请输入访问密码">
+        </div>
+        {% if error %}<p class="form-error" role="alert">密码不正确，请重试。</p>{% endif %}
+        <button type="submit" class="primary-button full-width">进入仪表盘</button>
+      </form>
+      <p class="secure-note"><span aria-hidden="true">●</span> HTTPS 加密 · 7 天安全会话</p>
+    </section>
+  </main>
+</body>
+</html>

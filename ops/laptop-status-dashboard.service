@@ -1,0 +1,19 @@
+[Unit]
+Description=T470s laptop status dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/zengkai/Codes/laptop-status-dashboard
+EnvironmentFile=/home/zengkai/.config/laptop-status-dashboard.env
+Environment=PATH=/home/zengkai/.nvm/versions/node/v24.22.1/bin:/home/zengkai/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/zengkai/Codes/laptop-status-dashboard/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8765 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=3
+# crontab(1) is setgid crontab; the collector needs that narrow privilege to
+# read the current user's schedule. The web service still binds to loopback.
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
